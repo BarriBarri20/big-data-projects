@@ -44,10 +44,4 @@ def data_to_kafka(nb_patient=10,n=2):
         sleep(n)
     producer.flush()
 
-
-                                                	
 data_to_kafka(nb_patient=6) 
-
-
-
-
