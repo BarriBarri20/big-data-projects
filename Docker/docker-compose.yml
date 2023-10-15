@@ -1,5 +1,5 @@
 ---
-version: '2'
+version: '3'
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:5.3.0
@@ -97,7 +97,7 @@ services:
       PORT: 9021
   
   mongo:
-    image: mongo:4.2.2     
+    image: mongo:latest
     hostname: mongo
     container_name: mongo
     ports:
@@ -105,4 +105,12 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+    volumes: 
+      - shared_database:/data/db
     command: [--auth] 
+  vc_db:
+    image: mongo:latest
+    volumes: 
+      - shared_database:/data/db
+volumes:
+  shared_database:
